@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {margin:0;}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar a  {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+ // background-color: #4CAF50;
+}
+
+.navbar a:hover{background-color: #ffaf50}
+
+ 
+
+.bla{
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: #4CAF50;
+}
+.bla:hover{background-color: #ffaf50}
+
+ 
+
+.main {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px; /* Used in this example to enable scrolling */
+}
+/* Dropdown Button */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <div><a class="dropbtn" href="xd">Home</a></div>
+  <a class="dropbtn" href="https://www.github.com" target="_blank">github in newWindow</a>
+  <a class="dropbtn" href="../bible/index.html">bible</a>
+</div> 
+<div id = "blNarBar"></div>
+<div class="main">
+  <h1>HTML</h1>
+  <h2 id="blPageV"></h2>
+  <h2>The navigation bar will stay at the top of the page while scrolling</h2>
+<div class="dropdown">
+  <a class="dropbtn">File1</a>
+  
+</div>
+<div class="dropdown">
+  <a class="dropbtn" href="https://littleflute.github.io/forks/">Forks</a>
+  <div class="dropdown-content">
+    <a href="vextab/index.html">vextab</a>
+    <a href="Highcharts/index.html">Hightcharts</a>
+    <a href="beg-javascript-w-dom-scripting-ajax/index.html">beg-javascript-w-dom-scripting-ajax</a>
+  </div>
+</div>
+
+  <p>Some text some text some text some text..</p>
+   <p>Some text some text some text some text..</p>
+  <p>Some text some text some text some text..</p>
+</div>
+
+<script>
+function blNavBar()
+{
+	this.divHome	= null;
+	this.getHome	= function ()
+	{
+		return this.divHome;
+		;
+	}
+	this.init	= function (divId,top)
+	{
+		this.divHome 	= document.getElementById(divId);
+		this.top	= top;
+	}
+	this.blPageV	= function ()
+	{
+		var v = document.getElementById("blPageV");
+		if(!v)
+		{
+			v = document.createElement("div");
+			document.body.appendChild(v);
+		}
+		v.innerHTML = this.v; 
+	}
+	this.show	= function (b)
+	{
+		
+		if(!this.divHome)
+		{
+			this.divHome = document.createElement("div");
+			document.body.appendChild(this.divHome);
+			this.setStyle();
+		}
+		 
+		if(b)
+		{
+			var h = this.getHome();
+		 	h.style.display = "block";	
+			this.addLink("http://www.baidu.com","baidu");
+			this.addLink("http://www.w3schools.com","w3schools");
+		}
+		else
+		{
+			var h = this.getHome();
+		 	h.style.display = "none";
+			;
+		}
+		;
+	}
+	this.setStyle	= function ()
+	{
+		var h = this.getHome();
+		if(!h) return;
+		h.style.backgroundColor 	= "#333";
+		h.style.position		= "fixed";
+		h.style.top			= this.top;
+		h.style.width			= "100%"; 
+		 	 
+	}
+	this.addLink	= function (sHref,sTxt)
+	{
+		var h = this.getHome();
+		if(!h) return;
+		var l	= document.createElement("div");
+		var s	= "";
+		s 	= "<a href='";
+		s += sHref;
+		s += "' class='bla'>";
+		s += sTxt;
+		s += "</a>";
+		l.innerHTML = s;
+		h.appendChild(l);
+	}
+	this.top		= "300px";
+	this.v			= "v0.0.5...";
+}
+var blNB = new blNavBar();
+blNB.blPageV();
+blNB.init("blNavBar","100px");
+blNB.show(true);
+
+var b2 = new blNavBar();
+b2.init("blNavBar2","200px");
+b2.show(true);a
+</script>
+</body>
+</html>
